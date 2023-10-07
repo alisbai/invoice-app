@@ -1,8 +1,8 @@
-import './App.css';
+import './styles/App.scss';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App heading-font-l">
     invoice app
     </div>
   );
