@@ -1,10 +1,11 @@
-import './styles/App.scss';
+import Dropdown from './components/inputs/Dropdown';
 import TextField from './components/inputs/TextField';
-import Label from './components/inputs/Label';
+import './styles/App.scss';
+
 function App() {
   return (
     <div className="App">
-      <Label content="this is a label" />
+      <Dropdown />
       <TextField />
     </div>
   );
