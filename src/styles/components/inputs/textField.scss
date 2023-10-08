@@ -1,14 +1,28 @@
 @import "../../variables.scss";
 
 .text-field {
-    border: 1px solid $lightBlueishGray;
     border-radius: 4px;
     height: 48px;
     padding: 0 20px;
     box-sizing: border-box;
 }
 
-.text-field:focus {
+.text-field-bright-mode {
+    border: 1px solid $lightBlueishGray;
+}
+
+.text-field-bright-mode:focus {
     outline: none;
     border-color: $lightIndigo;
+}
+
+.text-field-dark-mode {
+    background-color: $darkBlueMarin;
+    border: 1px solid $blueMarin;
+    color: white;
+    caret-color: $brightIndigo;
+}
+
+.text-field-dark-mode:focus {
+    outline: none;
 }

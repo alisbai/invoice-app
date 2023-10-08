@@ -1,5 +1,9 @@
 @import "../../variables.scss";
 
-.label {
+.label-bright-mode {
     color: $blueishGray;
+}
+
+.label-dark-mode {
+    color: $lightBlueishGray;
 }
