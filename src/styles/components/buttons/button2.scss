@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+.btn2 {
+    border: none;
+    border-radius: 100px;
+    background-color: $brightIndigo;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.btn2:hover {
+    background-color: $lightIndigo;
+}
+
+.btn2-text {
+    padding: 0 6px;
+}

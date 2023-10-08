@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+.btn5 {
+    border: none;
+    border-radius: 100px;
+    background-color: $brightRed;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.btn5:hover {
+    background-color: $lightRed;
+}
+
+.btn5-text {
+    padding: 0 6px;
+}

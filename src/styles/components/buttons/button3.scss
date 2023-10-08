@@ -1,0 +1,32 @@
+@import "../../variables.scss";
+
+.btn3 {
+    border: none;
+    border-radius: 100px;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.btn3-bright-mode {
+    background-color: #F9FAFE;
+    color: $blueishGray;
+}
+
+.btn3-bright-mode:hover {
+    background-color: $lightBlueishGray;
+    color: $blueishGray;
+}
+
+.btn3-dark-mode {
+    background-color: $blueMarin;
+    color: $lightBlueishGray;
+}
+
+.btn3-dark-mode:hover {
+    background-color: white;
+    color: $lightBlueishGray;
+}
