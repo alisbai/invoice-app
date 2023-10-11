@@ -1,12 +1,11 @@
-import Dropdown from './components/inputs/Dropdown';
-import TextField from './components/inputs/TextField';
-import './styles/App.scss';
-
+import UserBar from './components/UserBar';
+import { useSelector } from 'react-redux';
+import './styles/app.scss';
 function App() {
+  const lightSwitch = useSelector(state => state.lightSwitch.value);
   return (
-    <div className="App">
-      <Dropdown />
-      <TextField />
+    <div className={`app ${lightSwitch ? "app-bright-mode" : "app-dark-mode"}`}>
+      <UserBar />
     </div>
   );
 }

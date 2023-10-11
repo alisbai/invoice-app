@@ -6,3 +6,22 @@
 button {
     cursor: pointer;
 }
+
+.app {
+    height: 100vh;
+    display: flex;
+}
+
+.app-bright-mode {
+    background: white;
+}
+
+.app-dark-mode {
+    background: $black;
+}
+
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+  }

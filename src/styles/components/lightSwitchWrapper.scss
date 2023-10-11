@@ -1,0 +1,29 @@
+
+.light-switch-wrapper {
+    height: 103px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.light-switch-image {
+    cursor: pointer;
+}
+
+.light-switch-image:hover {
+    filter: brightness(1.2);
+}
+
+
+@media (max-width: 768px) {
+    .light-switch-wrapper {
+        height: 100%;
+        width: 80px;
+    }
+}
+
+@media (max-width: 375px) {
+    .light-switch-wrapper {
+        width: 72px;
+    }
+  }

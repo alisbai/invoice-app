@@ -1,0 +1,29 @@
+@import "../../variables.scss";
+
+.dropdown-option-item {
+    height: 48px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-option-item:hover {
+    color: $brightIndigo;
+}
+
+.dropdown-option-item-bright-mode {
+    background-color: white;
+    border-bottom: 1px solid $lightBlueishGray;
+}
+
+.dropdown-option-item-dark-mode {
+    background-color: $blueMarin;
+    border-bottom: 1px solid $blueMarin;
+    color: $lightBlueishGray;
+}
+
+.dropdown-option-item-chosen {
+    color: $brightIndigo
+}

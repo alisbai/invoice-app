@@ -1,0 +1,30 @@
+@import "../../variables.scss";
+
+.calendar-tile {
+  width: calc(100% / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.calendar-tile-in-working-month {
+    cursor: pointer;
+  }
+
+.calendar-tile-in-working-month-bright-mode {
+  color: black;
+}
+
+.calendar-tile-in-working-month-dark-mode {
+  color: $lightBlueishGray;
+}
+
+  .calendar-tile-not-in-working-month {
+    color: $gray;
+  }
+  
+  .calendar-tile-chosen {
+    color: $brightIndigo;
+  }
+  

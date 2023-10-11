@@ -1,0 +1,69 @@
+@import "../../variables.scss";
+
+.calendar-field {
+  border-radius: 4px;
+  height: 48px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.calendar-field-bright-mode {
+  border: 1px solid $lightBlueishGray;
+}
+
+.calendar-field-bright-mode-focused {
+  border-color: $lightIndigo;
+}
+
+.calendar-field-dark-mode {
+  background-color: $darkBlueMarin;
+  border: 1px solid $blueMarin;
+  color: white;
+  caret-color: $brightIndigo;
+}
+
+.calendar-icon {
+  margin-left: auto;
+}
+
+.calendar {
+  padding:25px 18px 30px 18px;
+}
+
+.calendar-hidden {
+  display: none;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 31px;
+  padding: 0 5px;
+}
+
+  
+  .calendar-body ul {
+    width: 200px;
+    height:140px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
+  .calendar-arrow-prev, .calendar-arrow-next {
+    cursor: pointer;
+  }
+
+  .calendar-bright-mode {
+    color: black;
+    background-color: white;
+  }
+
+  .calendar-dark-mode {
+    color:$lightBlueishGray;
+    background-color: $blueMarin;
+  }

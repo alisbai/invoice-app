@@ -7,7 +7,7 @@ export const lightSwitchSlice = createSlice({
     },
     reducers: {
         switchLight: state => {
-            return !state.value;
+            state.value = !state.value;
         }
     }
 })
