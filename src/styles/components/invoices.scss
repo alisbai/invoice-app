@@ -1,0 +1,28 @@
+@import "../variables.scss";
+
+.invoices {
+    width: 730px;
+    margin: auto;
+    margin-top: 77px;
+}
+
+.invoices-header {
+    display: flex;
+    align-items: center;
+}
+
+.invoices-title-wrapper {
+    margin-right: auto;
+}
+
+invoices-title-bright-mode {
+    color: black;
+}
+
+.invoices-title-dark-mode {
+    color: white;
+}
+
+.number-of-invoices {
+    color: $gray;
+}

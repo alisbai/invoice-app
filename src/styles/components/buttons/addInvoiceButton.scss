@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 
-.btn1 {
+.add-invoice-btn {
     border: none;
     border-radius: 100px;
     background-color: $brightIndigo;
@@ -10,11 +10,11 @@
     height: 48px;
 }
 
-.btn1:hover {
+.add-invoice-btn:hover {
     background-color: $lightIndigo;
 }
 
-.btn1-plus-sign-wrapper {
+.add-invoice-btn-plus-sign-wrapper {
     background: white;
     width: 32px;
     height: 32px;
@@ -24,7 +24,7 @@
     border-radius: 50%;
 }
 
-.btn1-text {
+.add-invoice-btn-text {
     padding: 0 15px;
 }
 

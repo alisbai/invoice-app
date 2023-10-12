@@ -12,8 +12,12 @@ button {
     display: flex;
 }
 
+.main-content-wrapper {
+    width: 100%;
+}
+
 .app-bright-mode {
-    background: white;
+    background: $lightBg;
 }
 
 .app-dark-mode {

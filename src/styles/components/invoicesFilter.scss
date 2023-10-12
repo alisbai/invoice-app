@@ -1,0 +1,18 @@
+@import "../variables.scss";
+.invoices-filter {
+    padding-right: 40px;
+    cursor: pointer;
+    position: relative;
+}
+
+.invoices-filter-down-arrow {
+    margin-left: 15px;
+}
+
+.invoices-filter-bright-mode {
+    color: black;
+}
+
+.invoices-filter-dark-mode {
+    color: white;
+}
