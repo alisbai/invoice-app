@@ -17,3 +17,14 @@
 body {
     height: 100vh;
 }
+
+
+input[type="checkbox"], input[type="checkbox"]:hover {
+    accent-color: $brightIndigo;
+  }
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }

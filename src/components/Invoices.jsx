@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 export default function Invoices() {
 
   const lightSwitch = useSelector(state => state.lightSwitch.value);
+  const screenDimensions = useSelector(state => state.screenDimensions.value);
     return(
         <div className="heading-font-s1 invoices">
             <div className="invoices-header">
@@ -14,7 +15,7 @@ export default function Invoices() {
                     <span className={`body-font-1 number-of-invoices ${lightSwitch ? "number-of-invoices-bright-mode" : "number-of-invoices-dark-mode"}`}>There are 7 invoices</span>
                 </div>
                 <InvoicesFilter />
-                <AddInvoiceButton text="Add Invoice" />
+                <AddInvoiceButton text={screenDimensions.width > 768 ? "Add Invoice" : "Add"} />
             </div>
             <div className="invoices-body">
 

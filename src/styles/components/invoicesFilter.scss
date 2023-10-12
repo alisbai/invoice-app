@@ -16,3 +16,10 @@
 .invoices-filter-dark-mode {
     color: white;
 }
+
+
+@media (max-width: 375px) {
+    .invoices-filter {
+        padding-right: 18px;
+    }
+  }

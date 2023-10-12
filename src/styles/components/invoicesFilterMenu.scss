@@ -1,8 +1,14 @@
 @import "../variables.scss";
 .invoices-filter-menu {
-    width: 100%;
-    height: 100px;
+    width: 192px;
+    border-radius: 8px;
+    padding: 24px 24px 9px 24px;
     position: absolute;
+    right:0;
+    top: 37px;
+    box-shadow: rgba(50, 50, 93, 0.2) 0px 6px 12px -2px, rgba(0, 0, 0, 0.1) 0px 3px 7px -3px;
+    box-sizing: border-box;
+    cursor: default;
 }
 
 .invoices-filter-menu-visible {
@@ -20,3 +26,23 @@
 .invoices-filter-menu-dark-mode {
     background: $blueMarin;
 }
+
+.invoices-filter-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 11px;
+}
+
+
+.invoices-filter-checkbox {
+    margin: 0 13px 0 0;
+}
+
+
+
+@media (max-width: 375px) {
+    .invoices-filter-menu {
+        width: 180px;
+    }
+  }
