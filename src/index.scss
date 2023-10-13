@@ -13,6 +13,7 @@
 // }
 
 @import "styles/App.scss";
+@import "./styles/variables.scss";
 
 body {
     height: 100vh;
@@ -27,4 +28,19 @@ input[type="checkbox"], input[type="checkbox"]:hover {
     width: 16px;
     height: 16px;
     cursor: pointer;
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    // margin-block: 16px;
+    border-radius: 100vh;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $gray;
+    border-radius: 100vh;
   }

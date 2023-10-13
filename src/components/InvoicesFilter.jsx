@@ -1,7 +1,7 @@
 import "../styles/fonts.scss";
 import "../styles/components/invoicesFilter.scss";
 import downArrow from "../assets/icon-arrow-down.svg"
-import InvoicesFilterMenu from "./inputs/InvoicesFilterMenu";
+import InvoicesFilterMenu from "./InvoicesFilterMenu";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 

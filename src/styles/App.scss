@@ -13,7 +13,7 @@ button {
 }
 
 .main-content-wrapper {
-    width: 100%;
+    flex-grow: 1;
 }
 
 .app-bright-mode {
@@ -29,3 +29,10 @@ button {
         flex-direction: column;
     }
   }
+
+@media(min-width: 769px) {
+    .main-content-wrapper {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}

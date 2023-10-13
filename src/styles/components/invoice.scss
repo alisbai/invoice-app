@@ -1,0 +1,113 @@
+@import "../variables.scss";
+
+.invoice {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    padding:0 24px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0 1.9px 2px;
+    margin-bottom: 16px;
+}
+
+.invoice-bright-mode {
+    background-color: white;
+}
+
+.invoice-dark-mode {
+    background-color: $darkBlueMarin;
+    color: white;
+}
+
+.invoice-payment-due-bright-mode{
+    color: $blueishGray;
+}
+
+.invoice-due-word {
+    color:$gray;
+}
+
+.invoice-payment-due-dark-mode, .invoice-payment-due-dark-mode span  {
+    color: $lightBlueishGray;
+}
+
+.invoice-client-name-bright-mode {
+    color: #858BB2;
+}
+
+.invoice-client-name-dark-mode {
+    color: white;
+}
+
+
+.invoice-hashtag {
+    color: $blueishGray;
+}
+
+.invoice-client-name {
+    margin-right: auto;
+}
+
+.invoice-id {
+    margin-right: 6%;
+}
+
+.invoice-payment-due {
+    margin-right: 8%;
+}
+
+.invoice-total-price {
+    text-align: right;
+}
+
+.invoice-right-arrow {
+    margin-left: 2.7%;
+    cursor: pointer;
+ }
+
+ @media(max-width: 768px) {
+    .invoice-right-arrow {
+        margin-left: 2.9%;
+     }
+     .invoice-id {
+        margin-right: auto;
+        min-width: fit-content;
+    }
+    .invoice-payment-due {
+        margin-right: auto;
+        min-width: fit-content;
+    }
+
+    .invoice-total-price {
+        min-width: fit-content;
+    }
+
+    .invoice-client-name {
+        min-width: fit-content;
+    }
+ }
+
+ @media(max-width: 600px) {
+    .invoice {
+        justify-content: space-between;
+        height: auto;
+        padding: 22px 24px;
+    }
+    .invoice-due-price-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .invoice-total-price {
+        text-align: left;
+    }
+
+    .invoice-id, .invoice-client-name {
+        display: block;
+        margin-bottom: 24px;
+    }
+
+    .invoice-client-name {
+        text-align: right;
+    }
+ }

@@ -9,13 +9,14 @@
 .invoices-header {
     display: flex;
     align-items: center;
+    margin-bottom: 64px;
 }
 
 .invoices-title-wrapper {
     margin-right: auto;
 }
 
-invoices-title-bright-mode {
+.invoices-title-bright-mode {
     color: black;
 }
 
@@ -25,4 +26,20 @@ invoices-title-bright-mode {
 
 .number-of-invoices {
     color: $gray;
+}
+
+@media (max-width: 768px) {
+    .invoices {
+        margin-left: 48px;
+        margin-right: 48px;
+    }
+}
+
+@media (max-width: 376px) {
+    .invoices {
+        margin: 32px 24px 0 24px;
+    }
+    .invoices-header {
+        margin-bottom: 55px;
+    }
 }

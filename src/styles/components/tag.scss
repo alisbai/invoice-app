@@ -1,0 +1,50 @@
+@import "../variables.scss";
+
+.tag {
+    width: 104px;
+    height: 40px;
+    padding: 14px 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    margin-left: 5.4%;
+}
+
+.tag-paid {
+    color: #33D69F;
+    background-color: #F3FCF9;
+}
+
+.tag-pending {
+    color: #FF8F00;
+    background-color: #FFF8F0;
+}
+
+.tag-draft {
+    color:#373B53;
+    background-color: #F3F3F5;
+}
+
+
+.tag-paid-dark-mode {
+    background-color: #1F2B3F;
+}
+
+.tag-pending-dark-mode {
+    background-color: #2B2736;
+}
+
+.tag-draft-dark-mode {
+    background-color: #292C44;
+    color: $gray;
+}
+
+@media(max-width: 768px) {
+    .tag {
+        margin-left: auto;
+     }
+ }
+
+
