@@ -10,10 +10,16 @@ button {
 .app {
     height: 100vh;
     display: flex;
+    min-height: 100vh;
+    position: relative;
+    transition-property: all;
+    transition-duration: 1s;
 }
 
 .main-content-wrapper {
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .app-bright-mode {
@@ -27,6 +33,7 @@ button {
 @media (max-width: 768px) {
     .app {
         flex-direction: column;
+        height: auto;
     }
   }
 

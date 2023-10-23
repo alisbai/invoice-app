@@ -1,0 +1,51 @@
+@import "../variables.scss";
+
+.drawer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    border-radius: 0 20px 20px 0;
+    box-sizing: border-box;
+}
+
+.drawer-bright-mode {
+    background-color: white;
+}
+
+.drawer-dark-mode {
+    background-color: $darkBg;
+}
+
+.drawer-open {
+    width: max(50%, 500px);
+    padding: 60px 56px 0 159px;
+}
+
+
+.drawer-closed {
+    width: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+@media (max-width: 768px) {
+    .drawer-open {
+        width: 76%;
+        top: 80px;
+        padding: 60px 56px 32px 56px;
+    }
+}
+
+
+@media (max-width: 376px) {
+    .drawer-open {
+        width: 100%;
+        top: 72px;
+        border-radius: 0;
+    }
+}

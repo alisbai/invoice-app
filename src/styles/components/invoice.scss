@@ -9,6 +9,8 @@
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.07) 0 1.9px 2px;
     margin-bottom: 16px;
+    transition-property: all;
+    transition-duration: 1s;
 }
 
 .invoice-bright-mode {

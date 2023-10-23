@@ -2,14 +2,21 @@
 
 .invoices {
     max-width: 730px;
-    margin: auto;
     margin-top: 77px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .invoices-header {
     display: flex;
     align-items: center;
     margin-bottom: 64px;
+}
+
+.invoices-body {
+    overflow: auto;
 }
 
 .invoices-title-wrapper {
