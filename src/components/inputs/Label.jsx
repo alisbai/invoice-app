@@ -7,7 +7,7 @@ export default function Label({content= ""}) {
 
     return (
         <label 
-        className={`body-font-1 ${lightSwitch ? "label-bright-mode": "label-dark-mode"}`}
+        className={`body-font-1 label ${lightSwitch ? "label-bright-mode": "label-dark-mode"}`}
         >{content}
         </label>
     )

@@ -11,6 +11,7 @@
     transition-timing-function: ease-in-out;
     border-radius: 0 20px 20px 0;
     box-sizing: border-box;
+    overflow: auto;
 }
 
 .drawer-bright-mode {
@@ -22,7 +23,7 @@
 }
 
 .drawer-open {
-    width: max(50%, 500px);
+    width: max(50%, 719px);
     padding: 60px 56px 0 159px;
 }
 

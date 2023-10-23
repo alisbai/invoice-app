@@ -1,5 +1,9 @@
 @import "../../variables.scss";
 
+.dropdown-wrapper {
+    position: relative;
+}
+
 .dropdown {
     border-radius: 4px;
     height: 48px;
@@ -8,6 +12,8 @@
     display: flex;
     align-items: center;
     margin-bottom: 24px;
+    transition-property: all;
+    transition-duration: 1s;
 }
 
 .dropdown-bright-mode {
@@ -31,8 +37,16 @@
 
 .dropdown-content-wrapper {
     border-radius: 8px;
-    box-shadow: rgba(50, 50, 93, 0.2) 0px 6px 12px -2px, rgba(0, 0, 0, 0.1) 0px 3px 7px -3px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    overflow: hidden;
 }
+
+.dropdown-content-wrapper-bright-mode {
+    box-shadow: 0px 10px 20px 0px rgba(72, 84, 159, 0.25);
+}
+
 
 .dropdown-content-hidden {
     display: none;

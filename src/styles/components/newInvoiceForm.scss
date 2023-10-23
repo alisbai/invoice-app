@@ -1,0 +1,46 @@
+@import "../variables.scss";
+
+.new-invoice-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-invoice-form-heading-bright-mode {
+    color: black;
+}
+
+.new-invoice-form-heading-dark-mode {
+    color: white;
+}
+
+
+.new-invoice-form .br {
+    height: 25px;
+}
+
+.new-invoice-form-section-title {
+    color: $brightIndigo;
+    margin-top: 46px;
+    margin-bottom: 24px;
+    display: block;
+
+}
+
+.new-invoice-form-3-fields-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.new-invoice-form-3-fields-wrapper > div {
+    width: 30%;
+}
+
+.new-invoice-form-2-fields-wrapper {
+    margin-top: 49px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.new-invoice-form-2-fields-wrapper > div {
+    width: 47.5%;
+}

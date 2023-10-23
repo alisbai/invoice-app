@@ -132,8 +132,8 @@ export default function Calendar() {
   };
 
   return (
-    <div>
-      <div className={`calendar-field heading-font-s1 ${(calendarContentOpen && lightSwitch) && "calendar-field-bright-mode-focused"} ${lightSwitch ? "calendar-field-bright-mode" : "calendar-field-dark-mode"}`}
+    <div className="calendar-wrapper">
+      <div className={`calendar-field heading-font-s1 ${calendarContentOpen && lightSwitch ? "calendar-field-bright-mode-focused" : ""} ${lightSwitch ? "calendar-field-bright-mode" : "calendar-field-dark-mode"}`}
       onClick={handleCalendarContentToggle}
       dropdown tabIndex={0}
       >

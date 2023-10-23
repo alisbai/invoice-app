@@ -5,7 +5,7 @@ import DropdownOptionItem from "./DropdownOptionItem"
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-export default function Dropdown({options=["ali", "sbai", "med", "mehdi"]}) {
+export default function Dropdown({options=[]}) {
     const lightSwitch = useSelector(state => state.lightSwitch.value);
 
     const [selectedValue, setSelectedValue
@@ -24,7 +24,7 @@ export default function Dropdown({options=["ali", "sbai", "med", "mehdi"]}) {
     const dropdownContent = options.map((option, i) => <DropdownOptionItem isChosen={selectedValue === options[i]} value= {option}  onClick={() => {updateDisplayedValue(options[i]); handleOptionsToggle()}} />)
 
     return(
-        <div>
+        <div className="dropdown-wrapper">
             <div 
                 className={`dropdown heading-font-s1 ${(dropdownContentOpen && lightSwitch) && "dropdown-bright-mode-focused"} ${lightSwitch ? "dropdown-bright-mode" : "dropdown-dark-mode"}`} 
                 onClick={handleOptionsToggle}
@@ -38,7 +38,7 @@ export default function Dropdown({options=["ali", "sbai", "med", "mehdi"]}) {
                     />
                 </span>
             </div>
-            <div className={`dropdown-content-wrapper ${dropdownContentOpen ? "" : "dropdown-content-hidden"}`}>
+            <div className={`dropdown-content-wrapper ${dropdownContentOpen ? "" : "dropdown-content-hidden"} ${lightSwitch ? "dropdown-content-wrapper-bright-mode" : "dropdown-content-wrapper-dark-mode"}`}>
                 {dropdownContent}
             </div>
         </div>

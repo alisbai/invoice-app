@@ -1,5 +1,9 @@
 @import "../../variables.scss";
 
+.calendar-wrapper {
+  position: relative;
+}
+
 .calendar-field {
   border-radius: 4px;
   height: 48px;
@@ -8,6 +12,9 @@
   display: flex;
   align-items: center;
   margin-bottom: 24px;
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 1s;
 }
 
 .calendar-field-bright-mode {
@@ -30,7 +37,11 @@
 }
 
 .calendar {
+  position: absolute;
   padding:25px 18px 30px 18px;
+  border-radius: 8px;
+  transition-property: all;
+  transition-duration: 1s;
 }
 
 .calendar-hidden {
@@ -47,7 +58,7 @@
 
   
   .calendar-body ul {
-    width: 200px;
+    max-width: 200px;
     height:140px;
     display: flex;
     flex-wrap: wrap;
@@ -61,9 +72,11 @@
   .calendar-bright-mode {
     color: black;
     background-color: white;
+    box-shadow: 0px 10px 20px 0px rgba(72, 84, 159, 0.25);
   }
 
   .calendar-dark-mode {
     color:$lightBlueishGray;
     background-color: $blueMarin;
   }
+  

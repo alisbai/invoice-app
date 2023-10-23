@@ -19,7 +19,7 @@ export default function Invoices({filterOptions =["Draft", "Pending", "Paid"]}) 
   const [filterBy, setFilterBy] = useState(filterOptions);
 
   const generateInvoices = () =>{
-    return  dataState.map(datum => {
+    return  dataState.map((datum, i) => {
                 const id = datum.id;
                 const  due = datum.paymentDue;
                 const clientName = datum.clientName;
@@ -32,6 +32,7 @@ export default function Invoices({filterOptions =["Draft", "Pending", "Paid"]}) 
                     totalPrice={totalPrice} 
                     status={status} 
                     key={id}
+                    className={dataState.length === i + 1 ? "invoice-last": ""}
                 />
             })
   }
