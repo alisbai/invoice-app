@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import "../../styles/components/inputs/textField.scss";
 import "../../styles/fonts.scss";
 
-export default function TextField({required = true, type= "text", value ="", onChange,  readOnly = false, className}) {
+export default function TextField({required = true, type= "text", value ="", onChange= () => {},  readOnly = false, className}) {
 
     const handleChange = (e) => {
         const newVal = e.target.value;

@@ -5,26 +5,11 @@ import AddNewItemButton from "./buttons/AddNewItemButton";
 import { useSelector } from "react-redux";
 import TextField from "./inputs/TextField";
 import trashCanIcon from "../assets/icon-delete.svg";
+import { round } from "lodash";
 
 export default function ItemList() {
     const lightSwitch = useSelector(state => state.lightSwitch.value);
-    const [items, setItems] = useState([
-        {
-            name: "some item",
-            quantity: 2,
-            price: 200
-        },
-        {
-            name: "another item",
-            quantity: 2,
-            price: 200
-        },
-        {
-            name: "third item",
-            quantity: 2,
-            price: 200
-        },
-    ]);
+    const [items, setItems] = useState([]);
 
     const addNewItem = () => {
         setItems([...items, {
@@ -70,13 +55,41 @@ export default function ItemList() {
                     return updatedItems;
                 })
             }
-            return  <div className={`item-wrapper`} key={i}>
-                        <TextField className="item-name" onChange ={(name) => updateItemName(i, name)} value={item.name}/>
-                        <TextField className="item-quantity" onChange={(quantity) => updateItemQuantity(i, quantity)} value={item.quantity} type="number"/>
-                        <TextField className="item-price" onChange={(price) => updateItemPrice(i, price)} value={item.price} type="number"/>
-                        <span className={`item-total-price ${lightSwitch ? "item-total-price-bright-mode" : "item-total-price-dark-mode"}`}>{item.price * item.quantity}</span>
-                        <span className="item-delete-icon"><img alt="trash can icon" src={trashCanIcon} onClick={() => deleteItem(i)} /></span>
+            if(i === 0) {
+                return (
+                    <div className={`item-wrapper`} key={i}>
+                        <div>
+                            <span className={`item-attribute ${lightSwitch ? "item-attribute-bright-mode" : "item-attribute-dark-mode"}`}>Item Name</span>
+                            <TextField className="item-name" onChange ={(name) => updateItemName(i, name)} value={item.name}/>
+                        </div>
+                        <div>
+                            <span className={`item-attribute ${lightSwitch ? "item-attribute-bright-mode" : "item-attribute-dark-mode"}`}>Qty.</span>
+                            <TextField className="item-quantity" onChange={(quantity) => updateItemQuantity(i, quantity)} value={item.quantity} type="number"/>
+                        </div>
+                        <div>
+                            <span className={`item-attribute ${lightSwitch ? "item-attribute-bright-mode" : "item-attribute-dark-mode"}`}>Price</span>
+                            <TextField className="item-price" onChange={(price) => updateItemPrice(i, price)} value={item.price} type="number"/>
+                        </div>
+                        <div>
+                            <span className={`item-attribute ${lightSwitch ? "item-attribute-bright-mode" : "item-attribute-dark-mode"}`}>Total</span>
+                            <span className={`item-total-price ${lightSwitch ? "item-total-price-bright-mode" : "item-total-price-dark-mode"}`}>{round(item.price * item.quantity, 2)}</span>
+                        </div>
+                        <div>
+                            <span className="item-delete-icon"><img alt="trash can icon" src={trashCanIcon} onClick={() => deleteItem(i)} /></span>
+                        </div>
                     </div>
+                )
+            } else {
+
+                return  <div className={`item-wrapper`} key={i}>
+                            <TextField className="item-name" onChange ={(name) => updateItemName(i, name)} value={item.name}/>
+                            <TextField className="item-quantity" onChange={(quantity) => updateItemQuantity(i, quantity)} value={item.quantity} type="number"/>
+                            <TextField className="item-price" onChange={(price) => updateItemPrice(i, price)} value={item.price} type="number"/>
+                            <span className={`item-total-price ${lightSwitch ? "item-total-price-bright-mode" : "item-total-price-dark-mode"}`}>{round(item.price * item.quantity, 2)}</span>
+                            <span className="item-delete-icon"><img alt="trash can icon" src={trashCanIcon} onClick={() => deleteItem(i)} /></span>
+                        </div>
+            }
+
         })
     }
 
@@ -84,16 +97,7 @@ export default function ItemList() {
     return (
         <div className={`heading-font-s1 item-list ${lightSwitch ? "item-list-bright-mode" : "item-list-dark-mode"}`}>
             <h3 className={`item-list-header ${lightSwitch ? "item-list-header-bright-mode" : "item-list-header-dark-mode"}`}>Item List</h3>
-            <div>
-                <div className="body-font-1 item-attributes">
-                    <span className="item-attribute-name">Item Name</span>
-                    <span className="item-attribute-quantity">Qty.</span>
-                    <span className="item-attribute-price">Price</span>
-                    <span className="item-attribute-total">Total</span>
-                    <span className="item-attribute-delete"></span>
-                </div>
-                {generateItems()}
-            </div>
+            {generateItems()}
             <AddNewItemButton onClick={addNewItem} />
         </div>
     )

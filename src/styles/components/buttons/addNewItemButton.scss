@@ -3,7 +3,6 @@
 .add-new-item-button {
     border: none;
     border-radius: 100px;
-    background-color: #F9FAFE;
     color: $blueishGray;
     display: flex;
     justify-content: center;
@@ -11,6 +10,14 @@
     height: 48px;
     padding-left: 18px;
     padding-right: 18px;
+}
+
+.add-new-item-button-bright-mode {
+    background-color: #F9FAFE;
+}
+
+.add-new-item-button-dark-mode {
+    background-color: $darkBlueMarin;
 }
 
 .add-new-item-button:hover {

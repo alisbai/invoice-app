@@ -12,9 +12,17 @@
     margin-bottom: 15px;
 }
 
-.item-attributes > span {
-    display: inline-block;
+.item-attribute {
+    display: block;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: -0.1px;
+    color: $blueishGray;
+    margin-bottom: 15px;
 }
+
 
 .item-attribute-name {
     width: 214px;
@@ -49,7 +57,7 @@
 .item-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     margin-bottom: 18px;
 }
 
@@ -68,6 +76,16 @@
     width: 100px;
 }
 
+.item-total-price {
+    display: block;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 48px;
+}
+
 .item-total-price-bright-mode {
     color: black;
 }
@@ -78,4 +96,8 @@
 
 .item-delete-icon {
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
 }
