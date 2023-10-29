@@ -1,18 +1,19 @@
 @import "../../variables.scss";
 
-.btn6 {
+.add-new-item-button {
     border: none;
     border-radius: 100px;
     background-color: #F9FAFE;
     color: $blueishGray;
     display: flex;
+    justify-content: center;
     align-items: center;
     height: 48px;
     padding-left: 18px;
     padding-right: 18px;
 }
 
-.btn6:hover {
+.add-new-item-button:hover {
     background-color: $lightBlueishGray;
 }
 

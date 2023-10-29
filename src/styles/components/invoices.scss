@@ -35,6 +35,12 @@
     color: $gray;
 }
 
+.img-empty {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media (max-width: 768px) {
     .invoices {
         margin-left: 48px;

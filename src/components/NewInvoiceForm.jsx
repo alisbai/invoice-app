@@ -5,11 +5,12 @@ import Label from "./inputs/Label";
 import TextField from "./inputs/TextField";
 import Calendar from "./inputs/Calendar";
 import Dropdown from "./inputs/Dropdown";
+import ItemList from "./ItemList";
 
 export default function NewInvoiceFrom() {
     const lightSwitch = useSelector(state => state.lightSwitch.value);
     return (
-        <div className={`new-invoice-form`}>
+        <form className={`new-invoice-form`}>
             <h2 
                 className={`heading-font-m  new-invoice-form-heading
                     ${lightSwitch ? "new-invoice-form-heading-bright-mode" : "new-invoice-form-heading-dark-mode"}`}
@@ -72,6 +73,9 @@ export default function NewInvoiceFrom() {
                     <Label content="Project Description" />
                     <TextField />
             </fieldset>
-        </div>
+            <fieldset>
+                <ItemList />
+            </fieldset>
+        </form>
     )
 }

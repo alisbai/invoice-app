@@ -3,6 +3,7 @@ import "../styles/components/invoices.scss"
 import AddInvoiceButton from "./buttons/AddInvoiceButton";
 import InvoicesFilter from "./InvoicesFilter";
 import { useSelector, useDispatch } from "react-redux";
+import emptyHero from "../assets/illustration-empty.svg"
 import Invoice from "./Invoice";
 import data from "../data.json";
 import { capitalize, size } from "lodash";
@@ -81,7 +82,7 @@ export default function Invoices({filterOptions =["Draft", "Pending", "Paid"]}) 
                 />
             </div>
             <div className="invoices-body">
-               {generateInvoices()}
+               {dataState.length? generateInvoices() : <img className="img-empty" alt="empty invoices" src={emptyHero}/>}
             </div>
         </div>
     )

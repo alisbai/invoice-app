@@ -1,0 +1,81 @@
+@import "../variables.scss";
+.item-list {
+    margin-top: 27px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-attributes {
+    color: $blueishGray;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.item-attributes > span {
+    display: inline-block;
+}
+
+.item-attribute-name {
+    width: 214px;
+}
+
+
+.item-attribute-quantity {
+    width: 46px;
+}
+
+
+.item-attribute-price {
+    width: 100px;
+}
+
+.item-attribute-total {
+    width: 24px;
+}
+
+.item-attribute-delete {
+    width: 13px;
+}
+
+
+.item-list-header {
+    color: #777F98;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.item-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+
+.item-name {
+    width: 214px;
+}
+
+.item-quantity {
+    width: 46px;
+    padding:0;
+    text-align: center;
+}
+
+.item-price {
+    width: 100px;
+}
+
+.item-total-price-bright-mode {
+    color: black;
+}
+
+.item-total-price-dark-mode {
+    color: $lightBlueishGray
+}
+
+.item-delete-icon {
+    cursor: pointer;
+}
