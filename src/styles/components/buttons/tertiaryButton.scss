@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 
-.btn4 {
+.tertiary-button {
     border: none;
     border-radius: 100px;
     color: white;
@@ -11,22 +11,22 @@
     padding-right: 21px;
 }
 
-.btn4-bright-mode {
+.tertiary-button-bright-mode {
     background-color: #373B53;
     color: $gray;
 }
 
-.btn4-bright-mode:hover {
+.tertiary-button-bright-mode:hover {
     background-color: $black;
     color: $gray;
 }
 
-.btn4-dark-mode {
+.tertiary-button-dark-mode {
     background-color: #373B53;
     color: $lightBlueishGray;
 }
 
-.btn4-dark-mode:hover {
+.tertiary-button-dark-mode:hover {
     background-color: $darkBlueMarin;
     color: $lightBlueishGray;
 }

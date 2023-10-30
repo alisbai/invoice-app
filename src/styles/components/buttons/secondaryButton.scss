@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 
-.btn3 {
+.secondary-button {
     border: none;
     border-radius: 100px;
     color: white;
@@ -9,24 +9,26 @@
     height: 48px;
     padding-left: 25px;
     padding-right: 25px;
+    transition-property: all;
+    transition-duration: 1s;
 }
 
-.btn3-bright-mode {
+.secondary-button-bright-mode {
     background-color: #F9FAFE;
     color: $blueishGray;
 }
 
-.btn3-bright-mode:hover {
+.secondary-button-bright-mode:hover {
     background-color: $lightBlueishGray;
     color: $blueishGray;
 }
 
-.btn3-dark-mode {
+.secondary-button-dark-mode {
     background-color: $blueMarin;
     color: $lightBlueishGray;
 }
 
-.btn3-dark-mode:hover {
+.secondary-button-dark-mode:hover {
     background-color: white;
     color: $lightBlueishGray;
 }

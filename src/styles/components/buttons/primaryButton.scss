@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 
-.btn2 {
+.primary-button {
     border: none;
     border-radius: 100px;
     background-color: $brightIndigo;
@@ -12,10 +12,10 @@
     padding-right: 15px;
 }
 
-.btn2:hover {
+.primary-button:hover {
     background-color: $lightIndigo;
 }
 
-.btn2-text {
+.primary-button-text {
     padding: 0 6px;
 }

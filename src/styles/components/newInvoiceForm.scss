@@ -3,6 +3,7 @@
 .new-invoice-form {
     display: flex;
     flex-direction: column;
+    padding: 60px 56px 0 159px;
 }
 
 .new-invoice-form-heading-bright-mode {
@@ -43,4 +44,61 @@
 
 .new-invoice-form-2-fields-wrapper > div {
     width: 47.5%;
+}
+
+.form-action-buttons-z-index-container {
+    z-index: 0;
+    position: sticky;
+    bottom: 0;
+}
+
+.form-action-buttons-wrapper {
+    display: flex;
+    border-radius: 0px 20px 20px 0px;
+    padding:31px 52px 31px 160px;
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+.form-action-buttons-wrapper-bright-mode {
+    background-color: white;
+}
+
+.form-action-buttons-wrapper-bright-mode::before {
+    content: "";
+    background: transparent;;
+    position: absolute;
+    bottom: 75%;
+    top: -50%;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    transition-property: all;
+    transition-duration: 0.4s;
+    z-index: -1;
+}
+
+.form-action-buttons-wrapper-bright-mode.form-action-buttons-wrapper-box-shadow::before {
+    background: linear-gradient(transparent, #00000022);
+}
+
+
+.form-action-buttons-wrapper-dark-mode {
+    background-color: $darkBlueMarin;
+}
+
+.save-and-send-button {
+    margin-left: 8px;
+}
+
+.discard-button {
+    margin-right: auto;
+}
+
+
+
+@media (max-width: 768px) {
+    .new-invoice-form {
+        padding: 60px 56px 0 56px;
+    }
 }
