@@ -5,7 +5,6 @@ import InvoicesFilter from "./InvoicesFilter";
 import { useSelector, useDispatch } from "react-redux";
 import emptyHero from "../assets/illustration-empty.svg"
 import Invoice from "./Invoice";
-import data from "../data.json";
 import { capitalize, size } from "lodash";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -14,6 +13,7 @@ import {toggleDrawer} from "../redux/drawer";
 export default function Invoices({filterOptions =["Draft", "Pending", "Paid"]}) {
   const lightSwitch = useSelector(state => state.lightSwitch.value);
   const screenDimensions = useSelector(state => state.screenDimensions.value);
+  const data = useSelector(state => state.data.value);
   const dispatch = useDispatch();
 
   const [dataState, setDataState] = useState(data);

@@ -6,8 +6,9 @@ import arrowLeft from "../../assets/icon-arrow-left.svg"
 import arrowRight from "../../assets/icon-arrow-right.svg"
 import calendarIcon from "../../assets/icon-calendar.svg"
 import { useSelector } from "react-redux";
+import { padStart } from "lodash";
 
-export default function Calendar() {
+export default function Calendar({onChange}) {
   const lightSwitch = useSelector(state => state.lightSwitch.value);
 
   const date = new Date();
@@ -77,6 +78,13 @@ export default function Calendar() {
       new Date(workingDate.year, workingDate.month, 0).getDate()
     );
   }, [workingDate]);
+
+  useEffect(() => {
+    const year = selectedDate.year;
+    const month = selectedDate.month;
+    const day = selectedDate.day;
+    onChange(`${year}-${padStart(month + 1, 2, "0")}-${padStart(day, 2, "0")}`);
+  }, [selectedDate])
 
   const manipulateCalendar = () => {
     const dates = [];

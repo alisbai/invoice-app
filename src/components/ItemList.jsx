@@ -7,54 +7,54 @@ import TextField from "./inputs/TextField";
 import trashCanIcon from "../assets/icon-delete.svg";
 import { round } from "lodash";
 
-export default function ItemList() {
+export default function ItemList({addItem, items,updateItemName, updateItemQuantity,updateItemPrice, deleteItem}) {
     const lightSwitch = useSelector(state => state.lightSwitch.value);
-    const [items, setItems] = useState([]);
+    // const [items, setItems] = useState([]);
 
-    const addNewItem = () => {
-        setItems([...items, {
-            name: "",
-            quantity: null,
-            price: null
-        }])
-    }
+    // const addNewItem = () => {
+    //     setItems([...items, {
+    //         name: "",
+    //         quantity: null,
+    //         price: null
+    //     }])
+    // }
 
     const generateItems = () => {
         return items.map((item, i) => {
-            const deleteItem = (indexToRemove) => {
-                setItems((prevItems) =>{
-                    return prevItems.filter((_, index) => index !== indexToRemove);
-                })
-            }
-            const updateItemName = (indexToUpdate, name) => {
-                setItems(prevItems => {
-                    const updatedItems = [...prevItems];
-                    updatedItems[indexToUpdate] = {...updatedItems[indexToUpdate], name: name};
-                    return updatedItems;
-                })
-            }
+            // const deleteItem = (indexToRemove) => {
+            //     setItems((prevItems) =>{
+            //         return prevItems.filter((_, index) => index !== indexToRemove);
+            //     })
+            // }
+            // const updateItemName = (indexToUpdate, name) => {
+            //     setItems(prevItems => {
+            //         const updatedItems = [...prevItems];
+            //         updatedItems[indexToUpdate] = {...updatedItems[indexToUpdate], name: name};
+            //         return updatedItems;
+            //     })
+            // }
 
-            const updateItemQuantity = (indexToUpdate, quantity) => {
-                setItems(prevItems => {
-                    const updatedItems = [...prevItems];
-                    if(isNaN(quantity)) {
-                        return updatedItems;
-                    }
-                    updatedItems[indexToUpdate] = {...updatedItems[indexToUpdate], quantity: quantity};
-                    return updatedItems;
-                })
-            }
+            // const updateItemQuantity = (indexToUpdate, quantity) => {
+            //     setItems(prevItems => {
+            //         const updatedItems = [...prevItems];
+            //         if(isNaN(quantity)) {
+            //             return updatedItems;
+            //         }
+            //         updatedItems[indexToUpdate] = {...updatedItems[indexToUpdate], quantity: quantity};
+            //         return updatedItems;
+            //     })
+            // }
 
-            const updateItemPrice = (indexToUpdate, price) => {
-                setItems(prevItems => {
-                    const updatedItems = [...prevItems];
-                    if(isNaN(price)) {
-                        return updatedItems;
-                    }
-                    updatedItems[indexToUpdate] = {...updatedItems[indexToUpdate], price: price};
-                    return updatedItems;
-                })
-            }
+            // const updateItemPrice = (indexToUpdate, price) => {
+            //     setItems(prevItems => {
+            //         const updatedItems = [...prevItems];
+            //         if(isNaN(price)) {
+            //             return updatedItems;
+            //         }
+            //         updatedItems[indexToUpdate] = {...updatedItems[indexToUpdate], price: price};
+            //         return updatedItems;
+            //     })
+            // }
             if(i === 0) {
                 return (
                     <div className={`item-wrapper`} key={i}>
@@ -98,7 +98,7 @@ export default function ItemList() {
         <div className={`heading-font-s1 item-list ${lightSwitch ? "item-list-bright-mode" : "item-list-dark-mode"}`}>
             <h3 className={`item-list-header ${lightSwitch ? "item-list-header-bright-mode" : "item-list-header-dark-mode"}`}>Item List</h3>
             {generateItems()}
-            <AddNewItemButton onClick={addNewItem} />
+            <AddNewItemButton onClick={addItem} />
         </div>
     )
 }
