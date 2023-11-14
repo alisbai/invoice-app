@@ -10,13 +10,19 @@ import PrimaryButton from "./buttons/PrimaryButton";
 import SecondaryButton from "./buttons/SecondaryButton";
 import TertiaryButton from "./buttons/TertiaryButton";
 import { useEffect, useState } from "react";
+import { padStart } from "lodash";
 
 export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
     const lightSwitch = useSelector(state => state.lightSwitch.value);
+    var currentDate = new Date();
+    var year = currentDate.getFullYear();
+    var month = currentDate.getMonth();
+    var day = currentDate.getDate();
+
     const [formData, setFormData] = useState({
         "id": "",
         "createdAt": "",
-        "paymentDue": "",
+        "paymentDue": `${year}-${padStart(month + 1, 2, "0")}-${padStart(day, 2, "0")}`,
         "description": "",
         "paymentTerms": 1,
         "clientName": "",
@@ -38,6 +44,15 @@ export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
         "total": null
     });
     
+    const updatePaymentDue = (selectedDate) => {
+        const year = selectedDate.year;
+        const month = selectedDate.month;
+        const day = selectedDate.day;
+        const newPaymentDue = `${year}-${padStart(month + 1, 2, "0")}-${padStart(day, 2, "0")}`;
+        const newFormData = {...formData}
+        newFormData.paymentDue = newPaymentDue;
+        setFormData(newFormData);
+    }
 
     const handleFormChange = (keys, value)  => {
         const newFormData = {...formData};
@@ -91,7 +106,7 @@ export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
         setFormData({
             "id": "",
             "createdAt": "",
-            "paymentDue": "",
+            "paymentDue": `${year}-${padStart(month + 1, 2, "0")}-${padStart(day, 2, "0")}`,
             "description": "",
             "paymentTerms": 1,
             "clientName": "",
@@ -115,7 +130,6 @@ export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
     }
 
     useEffect(()=> {
-        console.log("inside useEffect")
         setFormData(prevState => {
             prevState.total = prevState.items.reduce((accumulator , current) => {
                 return accumulator + (current.price * current.quantity);
@@ -180,7 +194,15 @@ export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
                     <div className="new-invoice-form-2-fields-wrapper">
                         <div>
                             <Label content="Invoice Date" />
-                            <Calendar onChange={(value) => handleFormChange(["paymentDue"], value)}/>
+                            <Calendar 
+                                selectedDate={
+                                    {year: parseInt(formData.paymentDue.slice(0, 4)),
+                                    month: parseInt(formData.paymentDue.slice(5, 7) - 1),
+                                    day: parseInt(formData.paymentDue.slice(8, 10))} 
+                                }
+                                setSelectedDate= {updatePaymentDue}
+                                onChange={(value) => handleFormChange(["paymentDue"], value)}
+                            />
                         </div>
                         <div>
                             <Label content="Payment Terms" />

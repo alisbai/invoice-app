@@ -8,18 +8,8 @@ import calendarIcon from "../../assets/icon-calendar.svg"
 import { useSelector } from "react-redux";
 import { padStart } from "lodash";
 
-export default function Calendar({onChange}) {
+export default function Calendar({selectedDate, setSelectedDate}) {
   const lightSwitch = useSelector(state => state.lightSwitch.value);
-
-  const date = new Date();
-  const currentYear = date.getFullYear();
-  const currentMonth = date.getMonth();
-  const currentDay = date.getDate();
-  const [selectedDate, setSelectedDate] = useState({
-    year: currentYear,
-    month: currentMonth,
-    day: currentDay
-  });
 
   const [calendarContentOpen, setCalendarContentOpen] = useState(false);
 
@@ -43,8 +33,8 @@ export default function Calendar({onChange}) {
   ];
 
   const [workingDate, setWorkingDate] = useState({
-    year: currentYear,
-    month: currentMonth
+    year: selectedDate.year,
+    month: selectedDate.month
   });
 
   const [firstDayOfWorkingMonth, setFirstDayOfWorkingMonth] = useState(
@@ -78,13 +68,6 @@ export default function Calendar({onChange}) {
       new Date(workingDate.year, workingDate.month, 0).getDate()
     );
   }, [workingDate]);
-
-  useEffect(() => {
-    const year = selectedDate.year;
-    const month = selectedDate.month;
-    const day = selectedDate.day;
-    onChange(`${year}-${padStart(month + 1, 2, "0")}-${padStart(day, 2, "0")}`);
-  }, [selectedDate])
 
   const manipulateCalendar = () => {
     const dates = [];
