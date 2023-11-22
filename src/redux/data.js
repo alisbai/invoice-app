@@ -4,11 +4,12 @@ import data from "../data.json"
 export const dataSlice = createSlice({
     name: "data",
     initialState: {
-        value:data
+        value: data
     },
     reducers: {
-        addInvoice: (state, invoiceToAdd) => {
-            state.value = [...state, invoiceToAdd];
+        addInvoice: (state, action) => {
+            state.value = [...state.value, action.payload.invoiceToAdd];
+            console.log(state.value);
         }
     }
 })

@@ -1,6 +1,6 @@
 import "../styles/fonts.scss";
 import "../styles/components/newInvoiceForm.scss";
-import { useSelector } from "react-redux";
+import { useDispatch ,useSelector } from "react-redux";
 import Label from "./inputs/Label";
 import TextField from "./inputs/TextField";
 import Calendar from "./inputs/Calendar";
@@ -11,13 +11,17 @@ import SecondaryButton from "./buttons/SecondaryButton";
 import TertiaryButton from "./buttons/TertiaryButton";
 import { useEffect, useState } from "react";
 import { padStart } from "lodash";
+import { addInvoice } from "../redux/data";
+import { closeDrawer } from "../redux/drawer";
 
 export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
     const lightSwitch = useSelector(state => state.lightSwitch.value);
+    const dispatch = useDispatch();
     var currentDate = new Date();
     var year = currentDate.getFullYear();
     var month = currentDate.getMonth();
     var day = currentDate.getDate();
+    const paymentTermsOptions = ["Net 1 Day", "Net 7 Days", "Net 14 Days", "Net 30 Days"];
 
     const [formData, setFormData] = useState({
         "id": "",
@@ -27,7 +31,7 @@ export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
         "paymentTerms": 1,
         "clientName": "",
         "clientEmail": "",
-        "status": "paid",
+        "status": "",
         "senderAddress": {
         "street": "",
         "city": "",
@@ -49,9 +53,42 @@ export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
         const month = selectedDate.month;
         const day = selectedDate.day;
         const newPaymentDue = `${year}-${padStart(month + 1, 2, "0")}-${padStart(day, 2, "0")}`;
-        const newFormData = {...formData}
+        const newFormData = {...formData};
         newFormData.paymentDue = newPaymentDue;
         setFormData(newFormData);
+    }
+    const updatePaymentsTerm = (paymentTerm) => {
+        const newFormData = {...formData};
+        switch(paymentTerm) {
+            case "Net 1 Day":
+                newFormData.paymentTerms = 1;
+                break;
+            case "Net 7 Days":
+                newFormData.paymentTerms = 7;
+                break;
+            case "Net 14 Days":
+                newFormData.paymentTerms = 14;
+                break;
+            case "Net 30 Days":
+                newFormData.paymentTerms = 30;
+                break;
+            default:
+        }
+        setFormData(newFormData);
+    }
+    const getPaymentTermsSelectedValueIndex = (selectedValue) => {
+        switch(selectedValue) {
+            case 1:
+                return paymentTermsOptions.indexOf("Net 1 Day");
+            case 7:
+                return paymentTermsOptions.indexOf("Net 7 Days");
+            case 14:
+                return paymentTermsOptions.indexOf("Net 14 Days");
+            case 30:
+                return paymentTermsOptions.indexOf("Net 30 Days");
+            default:
+                console.log("couldn't find payment term option");
+        }
     }
 
     const handleFormChange = (keys, value)  => {
@@ -111,7 +148,7 @@ export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
             "paymentTerms": 1,
             "clientName": "",
             "clientEmail": "",
-            "status": "paid",
+            "status": "",
             "senderAddress": {
             "street": "",
             "city": "",
@@ -127,6 +164,44 @@ export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
             "items": [],
             "total": null
         })
+    }
+
+    const updateCreatedAtDate =() => {
+        var year = currentDate.getFullYear();
+        var month = currentDate.getMonth();
+        var day = currentDate.getDate();
+        const newFormData = {...formData};
+        newFormData.createdAt = `${year}-${padStart(month + 1, 2, "0")}-${padStart(day, 2, "0")}`
+        return newFormData;
+    }
+
+    const generateId = () => {
+        return Date.now().toString(36).slice(0, 2).toUpperCase() + Math.floor(Math.random() * 10000);
+    }
+
+    const saveFormData = (status) => {
+        //update created at date.
+        const newFormData = updateCreatedAtDate();
+        // Generate id for the form Data.
+        newFormData.id = generateId();
+        // set form data status to paid;
+        newFormData.status = status;
+        // push formData to redux state.
+        dispatch(addInvoice({invoiceToAdd: newFormData}));
+    }
+
+    const saveAsPaid = (e)=> {
+        e.preventDefault();
+        saveFormData("paid");
+        // reset formData.
+        resetForm();
+    }
+
+    const saveAsDraft = (e) => {
+        e.preventDefault();
+        saveFormData("draft");
+        // reset formData.
+        resetForm();
     }
 
     useEffect(()=> {
@@ -207,8 +282,10 @@ export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
                         <div>
                             <Label content="Payment Terms" />
                             <Dropdown 
-                            onChange={(value) => handleFormChange(["paymentTerms"], value)}
-                            options={["Net 1 Day", "Net 7 Days", "Net 14 Days", "Net 30 Days"]} />
+                            onChange={updatePaymentsTerm}
+                            options={paymentTermsOptions}
+                            selectedValue={ paymentTermsOptions[getPaymentTermsSelectedValueIndex(formData.paymentTerms)]}
+                             />
                         </div>
                     </div>
                         <Label content="Project Description" />
@@ -231,9 +308,15 @@ export default function NewInvoiceFrom({formActionButtonsWrapperClassName}) {
                     ${lightSwitch ? "form-action-buttons-wrapper-bright-mode" : "form-action-buttons-wrapper-dark-mode"} 
                     ${formActionButtonsWrapperClassName}`}
                 >
-                    <TertiaryButton onClick={resetForm} className="discard-button" text="Discard" />
-                    <SecondaryButton text="Save As Draft" />
-                    <PrimaryButton className="save-and-send-button" text="Save And Send" />
+                    <TertiaryButton onClick={() => {
+                        resetForm();
+                        dispatch(closeDrawer());
+                        }} 
+                        className="discard-button" 
+                        text="Discard" 
+                    />
+                    <SecondaryButton onClick={saveAsDraft} text="Save As Draft" />
+                    <PrimaryButton onClick={saveAsPaid} className="save-and-send-button" text="Save And Send" />
                 </div>
             </div>
         </>

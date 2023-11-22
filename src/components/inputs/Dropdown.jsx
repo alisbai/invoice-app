@@ -3,27 +3,19 @@ import "../../styles/components/inputs/dropdown.scss"
 import arrowDown from  "../../assets/icon-arrow-down.svg"
 import DropdownOptionItem from "./DropdownOptionItem"
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function Dropdown({options=[], onChange}) {
+export default function Dropdown({options=[], onChange, selectedValue}) {
     const lightSwitch = useSelector(state => state.lightSwitch.value);
 
-    const [selectedValue, setSelectedValue
-    ] = useState(options[0]);
-
     const updateDisplayedValue = (newVal) => {
-        setSelectedValue(newVal)
+        onChange(newVal);
     }
     const [dropdownContentOpen, setContentOpen] = useState(false);
 
     const  handleOptionsToggle = () => {
         setContentOpen(!dropdownContentOpen);
     }
-
-    useEffect(()=> {
-        onChange(selectedValue);
-    }, [selectedValue])
-
 
     const dropdownContent = options.map((option, i) => <DropdownOptionItem isChosen={selectedValue === options[i]} value= {option}  onClick={() => {updateDisplayedValue(options[i]); handleOptionsToggle()}} />)
 

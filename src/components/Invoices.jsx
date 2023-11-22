@@ -8,12 +8,13 @@ import Invoice from "./Invoice";
 import { capitalize, size } from "lodash";
 import { useState } from "react";
 import { useEffect } from "react";
-import {toggleDrawer} from "../redux/drawer";
+import {openDrawer} from "../redux/drawer";
 
 export default function Invoices({filterOptions =["Draft", "Pending", "Paid"]}) {
   const lightSwitch = useSelector(state => state.lightSwitch.value);
   const screenDimensions = useSelector(state => state.screenDimensions.value);
   const data = useSelector(state => state.data.value);
+  console.log(data);
   const dispatch = useDispatch();
 
   const [dataState, setDataState] = useState(data);
@@ -54,15 +55,20 @@ export default function Invoices({filterOptions =["Draft", "Pending", "Paid"]}) 
   }
 
   const onClick = () => {
-    dispatch(toggleDrawer());
+    dispatch(openDrawer());
+  }
+
+  const filterInvoices = () => {
+      setDataState(data.filter(datum => filterBy.includes(capitalize(datum.status))));
   }
 
   useEffect(() => {
-    const filterInvoices = () => {
-        setDataState(data.filter(datum => filterBy.includes(capitalize(datum.status))));
-    };
     filterInvoices();
-}, [filterBy])
+}, [filterBy]);
+
+useEffect(() => {
+    filterInvoices();
+}, [data])
 
     return(
         <div className="heading-font-s1 invoices">
