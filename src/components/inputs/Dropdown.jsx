@@ -17,8 +17,13 @@ export default function Dropdown({options=[], onChange, selectedValue}) {
         setContentOpen(!dropdownContentOpen);
     }
 
-    const dropdownContent = options.map((option, i) => <DropdownOptionItem isChosen={selectedValue === options[i]} value= {option}  onClick={() => {updateDisplayedValue(options[i]); handleOptionsToggle()}} />)
+    const dropdownContent = options.map((option, i) => <DropdownOptionItem isChosen={selectedValue === parseInt(options[i].match(/\d+/))} value= {option}  onClick={() => {updateDisplayedValue(parseInt(options[i].match(/\d+/))); handleOptionsToggle()}} />)
 
+    const findOptionToDisplay = () => {
+        const regex = new RegExp(`${selectedValue} `);
+        const option = options.filter(option => regex.test(option));
+        return option;
+    }
     return(
         <div className="dropdown-wrapper">
             <div 
@@ -26,7 +31,7 @@ export default function Dropdown({options=[], onChange, selectedValue}) {
                 onClick={handleOptionsToggle}
                 dropdown tabIndex={0}
             >
-            {selectedValue}
+            {findOptionToDisplay()}
                 <span className="dropdown-arrow-down">
                     <img 
                         alt="dropdown down" 

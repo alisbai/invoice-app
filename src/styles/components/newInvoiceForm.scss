@@ -101,4 +101,18 @@
     .new-invoice-form {
         padding: 60px 56px 0 56px;
     }
+
+    .form-action-buttons-wrapper {
+        padding-left: 56px;
+    }
+}
+
+@media (max-width: 675px) {
+    .new-invoice-form-2-fields-wrapper {
+        margin-top: 0;
+    }
+
+    .form-action-buttons-wrapper {
+        padding: 22px 24px;
+    }
 }

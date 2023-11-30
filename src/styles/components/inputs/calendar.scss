@@ -37,6 +37,8 @@
 }
 
 .calendar {
+  box-sizing: border-box;
+  width: 100%;
   position: absolute;
   padding:25px 18px 30px 18px;
   border-radius: 8px;

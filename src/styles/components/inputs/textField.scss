@@ -29,3 +29,10 @@
 .text-field-dark-mode:focus {
     outline: none;
 }
+
+.text-field-error:focus {
+    border-color: $brightRed;
+}
+.text-field-error {
+    border-color: $brightRed;
+}

@@ -1,23 +1,23 @@
 import { useSelector } from "react-redux";
+import { forwardRef } from "react";
 import "../../styles/components/inputs/textField.scss";
 import "../../styles/fonts.scss";
 
-export default function TextField({required = true, type= "text",name, value="", onChange= () => {},  readOnly = false, className}) {
+const TextField = forwardRef(({required = true, type= "text",name, onChange, onBlur, error, readOnly = false, className = ""}, ref) => {
 
-    const handleChange = (e) => {
-        const newVal = e.target.value;
-        onChange(newVal);
-    }
     const lightSwitch = useSelector(state => state.lightSwitch.value);
     return (
             <input 
-                className={`heading-font-s1 text-field ${lightSwitch? "text-field-bright-mode": "text-field-dark-mode"} ${className}`} 
+                className={`heading-font-s1 text-field ${lightSwitch? "text-field-bright-mode": "text-field-dark-mode"} ${error? "text-field-error": ""} ${className}`} 
                 type={type} 
                 required={required} 
                 name={name}
-                value={value} 
-                onChange={handleChange}
+                onChange={onChange}
+                onBlur={onBlur}
+                ref={ref}
                 readOnly={readOnly}
             />
     )
-}
+})
+
+export default TextField;

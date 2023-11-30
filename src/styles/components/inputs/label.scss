@@ -3,6 +3,8 @@
 .label {
     display: block;
     margin-bottom: 9px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .label-bright-mode {
@@ -11,4 +13,8 @@
 
 .label-dark-mode {
     color: $lightBlueishGray;
+}
+
+.label-error-message {
+    color: $brightRed;
 }

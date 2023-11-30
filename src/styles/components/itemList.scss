@@ -103,3 +103,40 @@
     height: 48px;
 }
 
+
+@media (max-width: 676px) {
+    .item-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .item-name-wrapper {
+        width: 100%;
+    }
+    .item-name {
+        width: 100%;
+    }
+    .item-price-quantity-total-delete-wrapper {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .item-quantity {
+        width: 64px;
+        margin-right: 16px;
+    }
+
+    .item-price {
+        margin-right: 16px;
+    }
+
+    .item-total-price {
+        width: 56px;
+    }
+    .item-total-price-wrapper {
+        margin-right: auto;
+    }
+
+    .item-delete-icon {
+        align-items: flex-end;
+    }
+}
