@@ -27,6 +27,10 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  useEffect(() => {
+    document.title = "Invoice App";
+  }, []);
+
   return (
     <div className={`app ${lightSwitch ? "app-bright-mode" : "app-dark-mode"}`}>
       <Modal>
