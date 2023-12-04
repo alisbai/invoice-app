@@ -1,25 +1,25 @@
 @import "../variables.scss";
 
-.new-invoice-form {
+.update-invoice-form {
     display: flex;
     flex-direction: column;
     padding: 60px 56px 0 159px;
 }
 
-.new-invoice-form-heading-bright-mode {
+.update-invoice-form-heading-bright-mode {
     color: $black;
 }
 
-.new-invoice-form-heading-dark-mode {
+.update-invoice-form-heading-dark-mode {
     color: white;
 }
 
 
-.new-invoice-form .br {
+.update-invoice-form .br {
     height: 25px;
 }
 
-.new-invoice-form-section-title {
+.update-invoice-form-section-title {
     color: $brightIndigo;
     margin-top: 46px;
     margin-bottom: 24px;
@@ -27,44 +27,45 @@
 
 }
 
-.new-invoice-form-3-fields-wrapper {
+.update-invoice-form-3-fields-wrapper {
     display: flex;
     justify-content: space-between;
 }
 
-.new-invoice-form-3-fields-wrapper > div {
+.update-invoice-form-3-fields-wrapper > div {
     width: 30%;
 }
 
-.new-invoice-form-2-fields-wrapper {
+.update-invoice-form-2-fields-wrapper {
     margin-top: 49px;
     display: flex;
     justify-content: space-between;
 }
 
-.new-invoice-form-2-fields-wrapper > div {
+.update-invoice-form-2-fields-wrapper > div {
     width: 47.5%;
 }
 
-.new-invoice-form-action-buttons-z-index-container {
+.update-invoice-form-action-buttons-z-index-container {
     z-index: 0;
     position: sticky;
     bottom: 0;
 }
 
-.new-invoice-form-action-buttons-wrapper {
+.update-invoice-form-action-buttons-wrapper {
     display: flex;
+    justify-content: flex-end;
     border-radius: 0px 20px 20px 0px;
     padding:31px 52px 31px 160px;
     transition-property: all;
     transition-duration: 1s;
 }
 
-.new-invoice-form-action-buttons-wrapper-bright-mode {
+.update-invoice-form-action-buttons-wrapper-bright-mode {
     background-color: white;
 }
 
-.new-invoice-form-action-buttons-wrapper-bright-mode::before {
+.update-invoice-form-action-buttons-wrapper-bright-mode::before {
     content: "";
     background: transparent;;
     position: absolute;
@@ -78,41 +79,41 @@
     z-index: -1;
 }
 
-.new-invoice-form-action-buttons-wrapper-bright-mode.new-invoice-form-action-buttons-wrapper-box-shadow::before {
+.update-invoice-form-action-buttons-wrapper-bright-mode.update-invoice-form-action-buttons-wrapper-box-shadow::before {
     background: linear-gradient(transparent, #00000022);
 }
 
 
-.new-invoice-form-action-buttons-wrapper-dark-mode {
+.update-invoice-form-action-buttons-wrapper-dark-mode {
     background-color: $darkBlueMarin;
 }
 
-.new-invoice-form-save-and-send-button {
+.update-invoice-form-save-changes-button {
     margin-left: 8px;
 }
 
-.new-invoice-form-discard-button {
+.update-invoice-form-discard-button {
     margin-right: auto;
 }
 
 
 
 @media (max-width: 768px) {
-    .new-invoice-form {
+    .update-invoice-form {
         padding: 60px 56px 0 56px;
     }
 
-    .new-invoice-form-action-buttons-wrapper {
+    .update-form-action-buttons-wrapper {
         padding-left: 56px;
     }
 }
 
 @media (max-width: 675px) {
-    .new-invoice-form-2-fields-wrapper {
+    .update-invoice-form-2-fields-wrapper {
         margin-top: 0;
     }
 
-    .new-invoice-form-action-buttons-wrapper {
+    .update-invoice-form-action-buttons-wrapper {
         padding: 22px 24px;
     }
 }

@@ -8,9 +8,7 @@ button {
 }
 
 .app {
-    height: 100vh;
     display: flex;
-    min-height: 100vh;
     position: relative;
     transition-property: all;
     transition-duration: 1s;
@@ -20,7 +18,14 @@ button {
     flex-grow: 1;
     display: flex;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
+
+// .main-content-height-for-modal {
+//     height: 100vh;
+// }
+
 
 .app-bright-mode {
     background: $lightBg;
@@ -33,13 +38,14 @@ button {
 @media (max-width: 768px) {
     .app {
         flex-direction: column;
-        height: auto;
+        // height: auto;
+        min-height: 100%;
     }
   }
 
 @media(min-width: 769px) {
     .main-content-wrapper {
-        margin-left: 5%;
-        margin-right: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
     }
 }

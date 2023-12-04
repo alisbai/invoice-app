@@ -1,5 +1,5 @@
 import "../styles/fonts.scss";
-import "../styles/components/newInvoiceForm.scss";
+import "../styles/components/updateInvoiceForm.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Label from "./inputs/Label";
 import TextField from "./inputs/TextField";
@@ -8,21 +8,22 @@ import Dropdown from "./inputs/Dropdown";
 import ItemList from "./ItemList";
 import PrimaryButton from "./buttons/PrimaryButton";
 import SecondaryButton from "./buttons/SecondaryButton";
-import TertiaryButton from "./buttons/TertiaryButton";
-import { padStart } from "lodash";
-import { addInvoice } from "../redux/data";
+import { updateInvoice } from "../redux/data";
 import { closeDrawer } from "../redux/drawer";
 import { useForm, Controller } from "react-hook-form";
 import { hideModal } from "../redux/modal";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
-export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
+const UpdateInvoiceForm = ({ formActionButtonsWrapperClassName }) => {
   const lightSwitch = useSelector((state) => state.lightSwitch.value);
   const screenDimensions = useSelector((state) => state.screenDimensions.value);
+  const { invoiceId } = useParams();
+  const invoiceData = useSelector((state) => state.data.value).find(
+    (invoice) => invoice.id === invoiceId
+  );
+  console.log("invoice data", invoiceData);
   const dispatch = useDispatch();
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const day = currentDate.getDate();
   const paymentTermsOptions = [
     "Net 1 Day",
     "Net 7 Days",
@@ -32,96 +33,73 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
   const messageForRequiredInput = "can't be empty";
   const form = useForm({
     defaultValues: {
-      id: "",
-      createdAt: "",
-      paymentDue: `${year}-${padStart(month + 1, 2, "0")}-${padStart(
-        day,
-        2,
-        "0"
-      )}`,
-      description: "",
-      paymentTerms: 1,
-      clientName: "",
-      clientEmail: "",
-      status: "",
+      id: invoiceData.id,
+      createdAt: invoiceData.createdAt,
+      paymentDue: invoiceData.paymentDue,
+      description: invoiceData.description,
+      paymentTerms: invoiceData.paymentTerms,
+      clientName: invoiceData.clientName,
+      clientEmail: invoiceData.clientEmail,
+      status: invoiceData.status,
       senderAddress: {
-        street: "",
-        city: "",
-        postCode: "",
-        country: "",
+        street: invoiceData.senderAddress.street,
+        city: invoiceData.senderAddress.city,
+        postCode: invoiceData.senderAddress.postCode,
+        country: invoiceData.senderAddress.country,
       },
       clientAddress: {
-        street: "",
-        city: "",
-        postCode: "",
-        country: "",
+        street: invoiceData.clientAddress.street,
+        city: invoiceData.clientAddress.city,
+        postCode: invoiceData.clientAddress.postCode,
+        country: invoiceData.clientAddress.country,
       },
-      items: [],
-      total: null,
+      items: invoiceData.items,
+      total: invoiceData.total,
     },
   });
   const {
     register,
-    setValue,
     handleSubmit,
     formState: { errors },
     control,
     reset,
   } = form;
 
-  const generateId = () => {
-    return (
-      Date.now().toString(36).slice(0, 2).toUpperCase() +
-      Math.floor(Math.random() * 10000)
-    );
-  };
-
+  useEffect(() => {
+    reset();
+  }, []);
   const onSubmit = (data) => {
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-    const day = currentDate.getDate();
-    data.createdAt = `${year}-${padStart(month + 1, 2, "0")}-${padStart(
-      day,
-      2,
-      "0"
-    )}`;
-    data.id = generateId();
     data.total = data.items.reduce(
       (accumulator, item) => accumulator + item.total,
       0
     );
-    dispatch(addInvoice({ invoiceToAdd: data }));
+    dispatch(updateInvoice({ updatedInvoice: data }));
     dispatch(closeDrawer());
+    dispatch(hideModal());
+  };
+
+  const cancelUpdate = () => {
+    dispatch(closeDrawer());
+    dispatch(hideModal());
     reset();
   };
 
-  const saveAsPaid = () => {
-    setValue("status", "paid");
-    handleSubmit(onSubmit)();
-    console.log(errors);
-  };
-
-  const saveAsDraft = () => {
-    setValue("status", "draft");
-    handleSubmit(onSubmit)();
-  };
-
   const generateForm = () => {
-    if (screenDimensions.width > 675) {
+    if (screenDimensions.width > 750) {
       return (
-        <form className={`new-invoice-form`}>
+        <form className={`update-invoice-form`}>
           <h2
-            className={`heading-font-m  new-invoice-form-heading
+            className={`heading-font-m  update-invoice-form-heading
                                 ${
                                   lightSwitch
-                                    ? "new-invoice-form-heading-bright-mode"
-                                    : "new-invoice-form-heading-dark-mode"
+                                    ? "update-invoice-form-heading-bright-mode"
+                                    : "update-invoice-form-heading-dark-mode"
                                 }`}
           >
-            New Invoice
+            Edit #{invoiceId}
           </h2>
           <fieldset>
-            <span className="heading-font-s1 new-invoice-form-section-title">
+            <span className="heading-font-s1 update-invoice-form-section-title">
               Bill From
             </span>
             <Label
@@ -136,7 +114,7 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
               error={!!errors?.senderAddress?.street?.message}
             />
             <div className="br"></div>
-            <div className="new-invoice-form-3-fields-wrapper">
+            <div className="update-invoice-form-3-fields-wrapper">
               <div>
                 <Label content="City" error={!!errors?.senderAddress?.city} />
                 <TextField
@@ -173,7 +151,7 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
             </div>
           </fieldset>
           <fieldset>
-            <span className="heading-font-s1 new-invoice-form-section-title">
+            <span className="heading-font-s1 update-invoice-form-section-title">
               Bill To
             </span>
             <Label
@@ -213,7 +191,7 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
               error={!!errors?.clientAddress?.street}
             />
             <div className="br"></div>
-            <div className="new-invoice-form-3-fields-wrapper">
+            <div className="update-invoice-form-3-fields-wrapper">
               <div>
                 <Label content="City" error={!!errors?.clientAddress?.city} />
                 <TextField
@@ -248,7 +226,7 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
                 />
               </div>
             </div>
-            <div className="new-invoice-form-2-fields-wrapper">
+            <div className="update-invoice-form-2-fields-wrapper">
               <div>
                 <Label content="Invoice Date" />
                 <Controller
@@ -293,19 +271,19 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
       );
     } else {
       return (
-        <form className={`new-invoice-form`}>
+        <form className={`update-invoice-form`}>
           <h2
-            className={`heading-font-m  new-invoice-form-heading
+            className={`heading-font-m  update-invoice-form-heading
                                 ${
                                   lightSwitch
-                                    ? "new-invoice-form-heading-bright-mode"
-                                    : "new-invoice-form-heading-dark-mode"
+                                    ? "update-invoice-form-heading-bright-mode"
+                                    : "update-invoice-form-heading-dark-mode"
                                 }`}
           >
             New Invoice
           </h2>
           <fieldset>
-            <span className="heading-font-s1 new-invoice-form-section-title">
+            <span className="heading-font-s1 update-invoice-form-section-title">
               Bill From
             </span>
             <Label
@@ -320,7 +298,7 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
               error={!!errors?.senderAddress?.street?.message}
             />
             <div className="br"></div>
-            <div className="new-invoice-form-2-fields-wrapper">
+            <div className="update-invoice-form-2-fields-wrapper">
               <div>
                 <Label content="City" error={!!errors?.senderAddress?.city} />
                 <TextField
@@ -338,7 +316,6 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
                 <TextField
                   {...register("senderAddress.postCode", {
                     required: true,
-                    pattern: /^\d+$/,
                   })}
                   error={!!errors?.senderAddress?.postCode}
                 />
@@ -359,7 +336,7 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
             </div>
           </fieldset>
           <fieldset>
-            <span className="heading-font-s1 new-invoice-form-section-title">
+            <span className="heading-font-s1 update-invoice-form-section-title">
               Bill To
             </span>
             <Label
@@ -399,7 +376,7 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
               error={!!errors?.clientAddress?.street}
             />
             <div className="br"></div>
-            <div className="new-invoice-form-2-fields-wrapper">
+            <div className="update-invoice-form-2-fields-wrapper">
               <div>
                 <Label content="City" error={!!errors?.clientAddress?.city} />
                 <TextField
@@ -416,7 +393,6 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
                 />
                 <TextField
                   {...register("clientAddress.postCode", {
-                    pattern: /^\d+$/,
                     required: true,
                   })}
                   error={!!errors?.clientAddress?.postCode}
@@ -484,33 +460,26 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
   return (
     <>
       {generateForm()}
-      <div className="new-invoice-form-action-buttons-z-index-container">
+      <div className="update-invoice-form-action-buttons-z-index-container">
         <div
-          className={`new-invoice-form-action-buttons-wrapper 
+          className={`update-invoice-form-action-buttons-wrapper 
                     ${
                       lightSwitch
-                        ? "new-invoice-form-action-buttons-wrapper-bright-mode"
-                        : "new-invoice-form-action-buttons-wrapper-dark-mode"
+                        ? "update-invoice-form-action-buttons-wrapper-bright-mode"
+                        : "update-invoice-form-action-buttons-wrapper-dark-mode"
                     } 
                     ${formActionButtonsWrapperClassName}`}
         >
-          <TertiaryButton
-            onClick={() => {
-              reset();
-              dispatch(closeDrawer());
-              dispatch(hideModal());
-            }}
-            className="new-invoice-form-discard-button"
-            text="Discard"
-          />
-          <SecondaryButton onClick={saveAsDraft} text="Save As Draft" />
+          <SecondaryButton onClick={cancelUpdate} text="Cancel" />
           <PrimaryButton
-            onClick={saveAsPaid}
-            className="new-invoice-form-save-and-send-button"
-            text="Save & Send"
+            onClick={() => handleSubmit(onSubmit)()}
+            className="update-invoice-form-save-changes-button"
+            text="Save Changes"
           />
         </div>
       </div>
     </>
   );
-}
+};
+
+export default UpdateInvoiceForm;

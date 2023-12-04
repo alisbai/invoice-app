@@ -15,16 +15,13 @@
     margin-bottom: 64px;
 }
 
-.invoices-body {
-    overflow: auto;
-}
 
 .invoices-title-wrapper {
     margin-right: auto;
 }
 
 .invoices-title-bright-mode {
-    color: black;
+    color: $black;
 }
 
 .invoices-title-dark-mode {
@@ -33,6 +30,37 @@
 
 .number-of-invoices {
     color: $gray;
+}
+
+.no-invoices-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-invoices-wrapper > p {
+    max-width: 24ch;
+    text-align: center;
+}
+
+.no-invoices-heading {
+    margin-top: 63px;
+    margin-bottom: 23px;
+}
+
+
+.no-invoices-heading-bright-mode, 
+.no-invoices-paragraph-mode {
+    color: $black;
+}
+
+.no-invoices-heading-dark-mode {
+    color: white;
+}
+
+.no-invoices-paragraph-dark-mode {
+    color: $lightBlueishGray;
 }
 
 .img-empty {
@@ -54,5 +82,9 @@
     }
     .invoices-header {
         margin-bottom: 55px;
+    }
+
+    .no-invoices-heading {
+        margin-top: 42px;
     }
 }

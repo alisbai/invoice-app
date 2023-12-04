@@ -2,20 +2,20 @@ import { useEffect, useState } from "react";
 import "../../styles/components/inputs/calendar.scss";
 import CalendarTile from "./CalendarTile";
 import "../../styles/fonts.scss";
-import arrowLeft from "../../assets/icon-arrow-left.svg"
-import arrowRight from "../../assets/icon-arrow-right.svg"
-import calendarIcon from "../../assets/icon-calendar.svg"
+import arrowLeft from "../../assets/icon-arrow-left.svg";
+import arrowRight from "../../assets/icon-arrow-right.svg";
+import calendarIcon from "../../assets/icon-calendar.svg";
 import { useSelector } from "react-redux";
 import { padStart } from "lodash";
 
-export default function Calendar({value, onChange}) {
-  const lightSwitch = useSelector(state => state.lightSwitch.value);
+export default function Calendar({ value, onChange }) {
+  const lightSwitch = useSelector((state) => state.lightSwitch.value);
 
   const [calendarContentOpen, setCalendarContentOpen] = useState(false);
 
   const handleCalendarContentToggle = () => {
     setCalendarContentOpen(!calendarContentOpen);
-  }
+  };
 
   const months = [
     "Jan",
@@ -29,21 +29,27 @@ export default function Calendar({value, onChange}) {
     "Sep",
     "Oct",
     "Nov",
-    "Dec"
+    "Dec",
   ];
   const [selectedDate, setSelectedDate] = useState({
     year: parseInt(value.slice(0, 4)),
-    month: parseInt(value.slice(5,7)) - 1,
-    day: parseInt(value.slice(-2))
-  })
+    month: parseInt(value.slice(5, 7)) - 1,
+    day: parseInt(value.slice(-2)),
+  });
 
   useEffect(() => {
-    onChange(`${selectedDate.year}-${padStart(selectedDate.month + 1, 2, "0")}-${padStart(selectedDate.day, 2, "0")}`)
-  }, [selectedDate])
+    onChange(
+      `${selectedDate.year}-${padStart(
+        selectedDate.month + 1,
+        2,
+        "0"
+      )}-${padStart(selectedDate.day, 2, "0")}`
+    );
+  }, [selectedDate]);
 
   const [workingDate, setWorkingDate] = useState({
     year: selectedDate.year,
-    month: selectedDate.month
+    month: selectedDate.month,
   });
 
   const [firstDayOfWorkingMonth, setFirstDayOfWorkingMonth] = useState(
@@ -82,7 +88,8 @@ export default function Calendar({value, onChange}) {
     const dates = [];
     let calendarTileValue = null;
     for (let i = 0; i < firstDayOfWorkingMonth; i++) {
-      calendarTileValue = previousMonthLastDate - firstDayOfWorkingMonth + i + 1;
+      calendarTileValue =
+        previousMonthLastDate - firstDayOfWorkingMonth + i + 1;
       dates.push(<CalendarTile value={calendarTileValue} />);
     }
     for (let i = 1; i <= workingMonthLastDate; i++) {
@@ -100,7 +107,7 @@ export default function Calendar({value, onChange}) {
             setSelectedDate({
               year: workingDate.year,
               month: workingDate.month,
-              day: dayVal
+              day: dayVal,
             })
           }
         />
@@ -133,24 +140,46 @@ export default function Calendar({value, onChange}) {
 
   return (
     <div className="calendar-wrapper">
-      <div className={`calendar-field heading-font-s1 ${calendarContentOpen && lightSwitch ? "calendar-field-bright-mode-focused" : ""} ${lightSwitch ? "calendar-field-bright-mode" : "calendar-field-dark-mode"}`}
-      onClick={handleCalendarContentToggle}
-      dropdown tabIndex={0}
+      <div
+        className={`calendar-field heading-font-s1 ${
+          calendarContentOpen && lightSwitch
+            ? "calendar-field-bright-mode-focused"
+            : ""
+        } ${
+          lightSwitch
+            ? "calendar-field-bright-mode"
+            : "calendar-field-dark-mode"
+        }`}
+        onClick={handleCalendarContentToggle}
+        dropdown
+        tabIndex={0}
       >
-      {`${selectedDate.day} ${months[selectedDate.month]} ${selectedDate.year}`}
-      <img 
-          alt="dropdown down" 
-          src={calendarIcon}
-          className="calendar-icon"
-      />
+        {`${selectedDate.day} ${months[selectedDate.month]} ${
+          selectedDate.year
+        }`}
+        <img alt="dropdown down" src={calendarIcon} className="calendar-icon" />
       </div>
-      <div className={`calendar heading-font-s1 ${lightSwitch ? "calendar-bright-mode" : "calendar-dark-mode"} ${calendarContentOpen ? "" : "calendar-hidden"}`}>
+      <div
+        className={`calendar heading-font-s1 ${
+          lightSwitch ? "calendar-bright-mode" : "calendar-dark-mode"
+        } ${calendarContentOpen ? "" : "calendar-hidden"}`}
+      >
         <div className="calendar-header">
-            <img className="calendar-arrow-prev" onClick={subtractMonthFromWorkingDate} alt="arrow left" src={arrowLeft} />
+          <img
+            className="calendar-arrow-prev"
+            onClick={subtractMonthFromWorkingDate}
+            alt="arrow left"
+            src={arrowLeft}
+          />
           <div>
             <p>{months[workingDate.month] + " " + workingDate.year}</p>
           </div>
-          <img className="calendar-arrow-next" onClick={addMonthToWorkingDate} alt="arrow right" src={arrowRight} />
+          <img
+            className="calendar-arrow-next"
+            onClick={addMonthToWorkingDate}
+            alt="arrow right"
+            src={arrowRight}
+          />
         </div>
         <div className="calendar-body">
           <ul className="calendar-dates">{manipulateCalendar()}</ul>

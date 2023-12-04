@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 
-.btn5 {
+.delete-button {
     border: none;
     border-radius: 100px;
     background-color: $brightRed;
@@ -12,10 +12,10 @@
     padding-right: 18px;
 }
 
-.btn5:hover {
+.delete-button:hover {
     background-color: $lightRed;
 }
 
-.btn5-text {
+.delete-button-text {
     padding: 0 6px;
 }
