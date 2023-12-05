@@ -17,7 +17,6 @@ export default function ItemList({ form }) {
     formState,
     formState: { errors },
   } = form;
-  console.log(formState);
 
   const items = watch("items", []);
 

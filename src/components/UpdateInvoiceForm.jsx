@@ -22,7 +22,6 @@ const UpdateInvoiceForm = ({ formActionButtonsWrapperClassName }) => {
   const invoiceData = useSelector((state) => state.data.value).find(
     (invoice) => invoice.id === invoiceId
   );
-  console.log("invoice data", invoiceData);
   const dispatch = useDispatch();
   const paymentTermsOptions = [
     "Net 1 Day",

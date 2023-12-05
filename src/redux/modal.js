@@ -8,7 +8,6 @@ export const modalSlice = createSlice({
   reducers: {
     showModal: (state) => {
       state.value = true;
-      console.log(state.value);
     },
     hideModal: (state) => {
       state.value = false;

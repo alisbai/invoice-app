@@ -122,7 +122,6 @@ export default function Calendar({ value, onChange }) {
 
   const addMonthToWorkingDate = () => {
     if (workingDate.month === 11) {
-      console.log("update year");
       setWorkingDate({ year: workingDate.year + 1, month: 0 });
     } else {
       setWorkingDate({ ...workingDate, month: workingDate.month + 1 });
@@ -131,7 +130,6 @@ export default function Calendar({ value, onChange }) {
 
   const subtractMonthFromWorkingDate = () => {
     if (workingDate.month === 0) {
-      console.log("update year");
       setWorkingDate({ year: workingDate.year - 1, month: 11 });
     } else {
       setWorkingDate({ ...workingDate, month: workingDate.month - 1 });

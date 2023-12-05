@@ -98,7 +98,6 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
   const saveAsPaid = () => {
     setValue("status", "paid");
     handleSubmit(onSubmit)();
-    console.log(errors);
   };
 
   const saveAsDraft = () => {
