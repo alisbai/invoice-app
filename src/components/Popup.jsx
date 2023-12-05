@@ -17,6 +17,7 @@ const Popup = () => {
     dispatch(deleteInvoice({ id: invoiceId }));
     navigate("/");
     dispatch(hideModal());
+    dispatch(hidePopup());
   };
 
   const handleCancelDeletion = () => {

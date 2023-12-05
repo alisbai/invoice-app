@@ -103,13 +103,14 @@ export default function Calendar({ value, onChange }) {
             workingDate.month === selectedDate.month &&
             workingDate.year === selectedDate.year
           }
-          onClick={(dayVal) =>
+          onClick={(dayVal) => {
             setSelectedDate({
               year: workingDate.year,
               month: workingDate.month,
               day: dayVal,
-            })
-          }
+            });
+            setCalendarContentOpen(false);
+          }}
         />
       );
     }

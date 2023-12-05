@@ -218,9 +218,6 @@ const InvoiceDetail = () => {
               : "invoice-detail-go-back-link-dark-mode"
           }`}
           to="/"
-          onClick={() => {
-            dispatch({ drawerType: "newInvoice" });
-          }}
         >
           <img src={arrowLeft} alt="left arrow" />
           Go Back

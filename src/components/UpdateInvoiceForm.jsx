@@ -14,6 +14,7 @@ import { useForm, Controller } from "react-hook-form";
 import { hideModal } from "../redux/modal";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { updateDrawerContent } from "../redux/drawerContent";
 
 const UpdateInvoiceForm = ({ formActionButtonsWrapperClassName }) => {
   const lightSwitch = useSelector((state) => state.lightSwitch.value);
@@ -74,12 +75,14 @@ const UpdateInvoiceForm = ({ formActionButtonsWrapperClassName }) => {
     );
     dispatch(updateInvoice({ updatedInvoice: data }));
     dispatch(closeDrawer());
+    dispatch(updateDrawerContent({ drawerType: "newInvoice" }));
     dispatch(hideModal());
   };
 
   const cancelUpdate = () => {
     dispatch(closeDrawer());
     dispatch(hideModal());
+    dispatch(updateDrawerContent({ drawerType: "newInvoice" }));
     reset();
   };
 
