@@ -150,12 +150,28 @@ const InvoiceDetail = () => {
         return (
           <div className="heading-font-s1 invoice-detail-item-wrapper">
             <div className="invoice-detail-item-wrapper-name-quantity-price">
-              <span>{item.name}</span>
+              <span
+                className={`invoice-detail-item-name heading-font-s1 ${
+                  lightSwitch
+                    ? "invoice-detail-black-text"
+                    : "invoice-detail-white-text"
+                }`}
+              >
+                {item.name}
+              </span>
               <span className="invoice-detail-quantity-x-price">
                 {item.quantity}x £ {item.price}
               </span>
             </div>
-            <span>£ {item.total}</span>
+            <span
+              className={`invoice-detail-item-price heading-font-s1 ${
+                lightSwitch
+                  ? "invoice-detail-black-text"
+                  : "invoice-detail-white-text"
+              }`}
+            >
+              £ {item.total}
+            </span>
           </div>
         );
       });
