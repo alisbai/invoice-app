@@ -92,6 +92,7 @@ export default function NewInvoiceFrom({ formActionButtonsWrapperClassName }) {
     );
     dispatch(addInvoice({ invoiceToAdd: data }));
     dispatch(closeDrawer());
+    dispatch(hideModal());
     reset();
   };
 
